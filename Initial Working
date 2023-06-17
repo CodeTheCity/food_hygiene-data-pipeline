@@ -1,0 +1,32 @@
+import requests
+import json
+
+
+
+url = "http://api.ratings.food.gov.uk/Establishments/basic/"
+
+
+
+headers = {
+    'x-api-version': '2',
+    'Accept': 'application/json',
+}
+
+
+
+response = requests.get(url, headers=headers)
+
+
+
+data = response.json()
+
+
+
+# print the data
+print(json.dumps(data, indent=2))
+
+
+
+# save the data to a file
+with open('hygiene_data.json', 'w') as f:
+    json.dump(data, f)
