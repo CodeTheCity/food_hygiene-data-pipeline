@@ -6,5 +6,6 @@ We all believe that the usability and ease of consumption of UK food hygiene dat
 
 As a first step during CTC29, we created an automated data pipeline that ingested the food hygiene data from the UK to a Tableau front. 
 The code and dashboard are hosted here.
+thank you for going through our work. 
 
 https://public.tableau.com/app/profile/xiao.lai/viz/FoodHygieneRatingUK/Dashboard1?publish=yes
