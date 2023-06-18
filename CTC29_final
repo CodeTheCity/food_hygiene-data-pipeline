@@ -1,0 +1,31 @@
+ Initialize an empty list to hold all data
+all_data = []
+
+# Iterate over each URL
+for url in urls:
+    # Get XML data
+    response = requests.get(url)
+    xml_data = response.content
+
+    # Parse XML data
+    tree = etree.fromstring(xml_data)
+
+    # Convert XML to dataframe
+    data = []
+    for establishment in tree.findall('.//EstablishmentDetail'):
+        row = {}
+        for field in establishment:
+            if field.text:
+                row[field.tag] = field.text
+            elif field.getchildren():  # Special handling for nested elements like Geocode
+                for child in field:
+                    row[child.tag] = child.text
+        data.append(row)
+
+    # Append the data from this URL to the master list
+    all_data.extend(data)
+
+# Create a dataframe from all_data
+df = pd.DataFrame(all_data)
+
+print(df)
